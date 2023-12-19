@@ -1,0 +1,67 @@
+body{
+  font-family:system-ui;
+  font-size: 1.25rem;
+  display: grid;
+  min-block-size: 100dvh;
+  place-content: center;
+  background-color: black;
+  color: white;
+
+}
+
+nav ul{
+  display: flex;
+  --_gap:2rem;
+  /* gap:2rem; */
+  margin:0;
+  padding: 0;
+  list-style: none;
+}
+nav li{
+  overflow: hidden;
+position: relative;
+padding-inline: calc(var(--_gap) / 2);
+}
+ 
+nav li::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom:0;
+  height: 3px;
+  width: 100%;
+  background: orangered;
+  scale: 0 1 ;
+  transition: scale 250ms,
+  translate 250ms;
+
+}
+
+nav li:hover::after {
+  scale: 1 1;
+}
+
+nav li:hover + li::after{
+ translate: -100%;
+ transition-delay: scale 300ms;
+  transition-delay: 200ms;
+}
+
+nav li:has(+ :hover)::after{
+  translate: 100%;
+  transition-delay: scale 300ms;
+  transition-delay: 200ms;
+}
+
+nav a{
+  color: inherit;
+  font-weight: 500;
+  opacity: 0.7;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+a:hover, 
+a:focus-visible{
+  opacity: 1;
+}
